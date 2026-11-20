@@ -1,0 +1,12 @@
+# CashPilot project instructions
+- Work only on the `main` branch.
+- Cloudflare is the infrastructure provider: Workers, Workers Static Assets, D1, R2 only when needed.
+- Do not introduce Vercel, Neon, Supabase, or another backend/database provider.
+- Transactions are manual entry; do not add automatic SMS/email detection.
+- Keep mobile-first responsive UX. The owner must use the same app on mobile and web.
+- Offline transaction and closure capture must be durable in IndexedDB; sync is idempotent.
+- Keep every transaction attributed to its authenticated employee and branch.
+- Preserve the four transaction types: deposit, withdrawal, transfer received, transfer sent.
+- Deposits and withdrawals create two-sided ledger movements; inter-agent transfers create one movement in the selected account.
+- Never silently delete financial records; corrections must be auditable.
+- Validate with the GitHub Actions build before considering a change ready.
