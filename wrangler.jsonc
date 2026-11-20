@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cashpilot",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-20",
+  "assets": { "directory": "./dist", "binding": "ASSETS", "not_found_handling": "single-page-application" },
+  "d1_databases": [{ "binding": "DB", "database_name": "cashpilot-db", "database_id": "35375802-6a3e-44d4-a890-55a2c30938e2", "migrations_dir": "migrations" }]
+}
