@@ -20,6 +20,8 @@
     "idb": "latest"
   },
   "devDependencies": {
-    "wrangler": "latest"
+    "wrangler": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
   }
 }
