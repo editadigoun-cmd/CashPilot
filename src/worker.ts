@@ -1,4 +1,4 @@
-interface Env{DB:D1Database;ASSETS:Fetcher}interface D1Database{prepare(q:string):D1PreparedStatement;batch<T=unknown>(s:D1PreparedStatement[]):Promise<T[]>}interface D1PreparedStatement{bind(...v:any[]):D1PreparedStatement;first<T=any>():Promise<T|null>;run<T=any>():Promise<T>;all<T=any>():Promise<{results:T[]}>}
+interface Env{DB:D1Database;ASSETS:{fetch(request:Request):Promise<Response>}}interface D1Database{prepare(q:string):D1PreparedStatement;batch<T=unknown>(s:D1PreparedStatement[]):Promise<T[]>}interface D1PreparedStatement{bind(...v:any[]):D1PreparedStatement;first<T=any>():Promise<T|null>;run<T=any>():Promise<T>;all<T=any>():Promise<{results:T[]}>}
 const json=(data:any,status=200)=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json;charset=utf-8'}});
 const uid=()=>crypto.randomUUID();
 const enc=(b:ArrayBuffer)=>btoa(String.fromCharCode(...new Uint8Array(b))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
