@@ -1,0 +1,18 @@
+{
+  "name": "CashPilot — Gestion Mobile Money",
+  "short_name": "CashPilot",
+  "description": "Gestion de points de vente Mobile Money",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#111b2e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/cashpilot.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
