@@ -1,32 +1,43 @@
 # CashPilot
 
-CashPilot is an offline-first mobile/web management platform for Mobile Money agents and multi-branch owners.
+Offline-first mobile/web management for Mobile Money agents and multi-branch owners.
 
-## Stack
-- React + TypeScript + Vite (responsive web/PWA)
-- Cloudflare Workers API
-- Cloudflare D1 SQL database
-- Local IndexedDB queue for offline transaction capture
+## Current foundation
+- Responsive owner dashboard and transaction capture interface.
+- Deposit, withdrawal, transfer received, and transfer sent categories.
+- Local IndexedDB persistence; queued transactions are retained when offline.
+- PWA manifest and service-worker shell caching.
+- Signup/login API, sessions, multi-business data model, branch membership.
+- Cloudflare Worker API and Cloudflare D1 SQL database.
+- Branch-level reports and daily closure draft UI.
 
-## Transaction categories
-- Deposit
-- Withdrawal
-- Transfer received
-- Transfer sent
+## Transaction accounting model
+- Customer deposit: cash increases, electronic balance decreases.
+- Customer withdrawal: electronic balance increases, cash decreases.
+- Transfer received: selected account increases.
+- Transfer sent: selected account decreases.
+- Commissions are recorded separately from transaction principal.
 
-Every record stores its branch and employee. Internal branch transfers are designed to be linked on both sides.
+## Cloudflare resources
+D1 database: `cashpilot-db` (database ID configured in `wrangler.jsonc`).
 
-## Development
+Apply migrations:
+```bash
+npx wrangler d1 migrations apply cashpilot-db --remote
+```
+The schema is already created in the connected production D1 database, and migration records have been initialized.
+
+## Local development
 ```bash
 npm install
 npm run dev
 ```
 
-## Cloudflare
-The D1 database `cashpilot-db` has been created in the connected Cloudflare account. Apply migrations with:
+## Cloudflare deployment
 ```bash
-npx wrangler d1 migrations apply cashpilot-db --remote
 npm run deploy
 ```
+The repository is configured for Cloudflare Workers + Static Assets. Connect the GitHub repository to Cloudflare Workers Builds or deploy using Wrangler authenticated to Cloudflare. No Vercel or Neon is used.
 
-This project is deployed only through Cloudflare. No Vercel or Neon.
+## Status
+Early foundation: responsive UI, local transaction capture, PWA shell, and API scaffolding are committed. Employee invitations, ledger-based balance calculations, transaction validation, complete offline sync testing, and production deployment remain in the next milestones.
