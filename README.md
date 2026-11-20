@@ -9,7 +9,7 @@ Offline-first mobile/web management for Mobile Money agents and multi-branch own
 - PWA manifest and service-worker shell caching.
 - Signup/login API, sessions, multi-business data model, branch membership.
 - Cloudflare Worker API and Cloudflare D1 SQL database.
-- Branch-level reports and daily closure draft UI.
+- Branch-level reports, employee invitations, daily closure capture and cash/electronic variance tracking.\n- Ledger-based account movements for cash and each electronic operator account.\n- Offline queue for transactions and daily closures with idempotent Cloudflare sync.
 
 ## Transaction accounting model
 - Customer deposit: cash increases, electronic balance decreases.
